@@ -635,7 +635,9 @@ int main(int argc, char* argv[]) {
         return EXIT_FAILURE;
     }
 
-#if ALLOW_ADBD_DISABLE_VERITY == 0  // "user" build
+#if 0
+    // We already use safety net hacks which spoof to green state.
+    // Remove this check completely.
     if (android::base::GetProperty("ro.boot.verifiedbootstate", "") != "orange") {
         LOG(ERROR) << "Device must be bootloader unlocked";
         return EXIT_FAILURE;
